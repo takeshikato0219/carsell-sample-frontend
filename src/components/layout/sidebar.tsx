@@ -308,9 +308,11 @@ export function Sidebar() {
     <div className="flex h-full w-60 flex-col bg-white border-r border-slate-200">
       {/* ヘッダー */}
       <div className="flex h-14 items-center px-5 border-b border-slate-200">
-        <h1 className="text-lg font-bold text-slate-800 tracking-tight">
-          CARSELL
-        </h1>
+        <Link href="/dashboard" className="cursor-pointer">
+          <h1 className="text-lg font-bold text-slate-800 tracking-tight hover:text-slate-600 transition-colors duration-150">
+            CARSELL
+          </h1>
+        </Link>
       </div>
 
       {/* ユーザー情報 */}
