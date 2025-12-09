@@ -1,0 +1,483 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================
+   Google Material Design風コンポーネントクラス
+   ===================== */
+
+@layer components {
+  /* Material Design プライマリボタン (Filled) */
+  .btn-md-filled {
+    @apply inline-flex items-center justify-center px-6 py-2.5
+           bg-google-blue-600 text-white font-medium text-sm
+           rounded-md-full shadow-md-1
+           transition-all duration-md-medium ease-md-standard
+           hover:bg-google-blue-700 hover:shadow-md-2
+           active:shadow-md-1
+           focus:outline-none focus:ring-2 focus:ring-google-blue-200 focus:ring-offset-2
+           disabled:bg-google-gray-300 disabled:text-google-gray-500 disabled:shadow-none disabled:cursor-not-allowed;
+  }
+
+  /* Material Design セカンダリボタン (Outlined) */
+  .btn-md-outlined {
+    @apply inline-flex items-center justify-center px-6 py-2.5
+           bg-transparent text-google-blue-600 font-medium text-sm
+           rounded-md-full border border-google-gray-300
+           transition-all duration-md-medium ease-md-standard
+           hover:bg-google-blue-50 hover:border-google-blue-600
+           active:bg-google-blue-100
+           focus:outline-none focus:ring-2 focus:ring-google-blue-200 focus:ring-offset-2
+           disabled:text-google-gray-400 disabled:border-google-gray-200 disabled:cursor-not-allowed;
+  }
+
+  /* Material Design テキストボタン */
+  .btn-md-text {
+    @apply inline-flex items-center justify-center px-4 py-2
+           text-google-blue-600 font-medium text-sm
+           rounded-md transition-all duration-md-medium ease-md-standard
+           hover:bg-google-blue-50
+           active:bg-google-blue-100
+           focus:outline-none focus:ring-2 focus:ring-google-blue-200;
+  }
+
+  /* Material Design トーナルボタン (Tonal) */
+  .btn-md-tonal {
+    @apply inline-flex items-center justify-center px-6 py-2.5
+           bg-google-blue-50 text-google-blue-700 font-medium text-sm
+           rounded-md-full
+           transition-all duration-md-medium ease-md-standard
+           hover:bg-google-blue-100
+           active:bg-google-blue-200
+           focus:outline-none focus:ring-2 focus:ring-google-blue-200 focus:ring-offset-2
+           disabled:bg-google-gray-100 disabled:text-google-gray-400 disabled:cursor-not-allowed;
+  }
+
+  /* Material Design カード (Elevated) */
+  .card-md {
+    @apply bg-white rounded-md-lg shadow-md-1
+           transition-all duration-md-medium ease-md-standard
+           hover:shadow-md-2;
+  }
+
+  /* Material Design カード (静的) */
+  .card-md-static {
+    @apply bg-white rounded-md-lg shadow-md-1;
+  }
+
+  /* Material Design カード (Outlined) */
+  .card-md-outlined {
+    @apply bg-white rounded-md-lg border border-google-gray-200;
+  }
+
+  /* Material Design インプット (Outlined) */
+  .input-md {
+    @apply w-full px-4 py-3 text-sm
+           bg-white border border-google-gray-300
+           rounded-md
+           transition-all duration-md-short ease-md-standard
+           placeholder:text-google-gray-500
+           focus:outline-none focus:border-google-blue-600 focus:ring-1 focus:ring-google-blue-600
+           hover:border-google-gray-400;
+  }
+
+  /* Material Design インプット (Filled) */
+  .input-md-filled {
+    @apply w-full px-4 pt-5 pb-2 text-sm
+           bg-google-gray-100 border-b-2 border-google-gray-400
+           rounded-t-md
+           transition-all duration-md-short ease-md-standard
+           placeholder:text-google-gray-500
+           focus:outline-none focus:border-google-blue-600 focus:bg-google-gray-50
+           hover:bg-google-gray-200;
+  }
+
+  /* Material Design セレクト */
+  .select-md {
+    @apply w-full px-4 py-3 text-sm
+           bg-white border border-google-gray-300
+           rounded-md appearance-none
+           transition-all duration-md-short ease-md-standard
+           focus:outline-none focus:border-google-blue-600 focus:ring-1 focus:ring-google-blue-600
+           hover:border-google-gray-400
+           cursor-pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%235f6368' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 44px;
+  }
+
+  /* Material Design チップ */
+  .chip-md {
+    @apply inline-flex items-center px-3 py-1.5
+           text-sm font-medium
+           bg-google-gray-100 text-google-gray-700
+           rounded-md-sm
+           transition-all duration-md-short ease-md-standard
+           hover:bg-google-gray-200;
+  }
+
+  .chip-md-blue {
+    @apply chip-md bg-google-blue-50 text-google-blue-700;
+  }
+
+  .chip-md-green {
+    @apply chip-md bg-google-green-50 text-google-green-700;
+  }
+
+  .chip-md-yellow {
+    @apply chip-md bg-google-yellow-50 text-google-yellow-800;
+  }
+
+  .chip-md-red {
+    @apply chip-md bg-google-red-50 text-google-red-700;
+  }
+
+  /* Material Design FAB (Floating Action Button) */
+  .fab-md {
+    @apply flex items-center justify-center
+           w-14 h-14
+           bg-google-blue-600 text-white
+           rounded-md-xl shadow-md-3
+           transition-all duration-md-medium ease-md-standard
+           hover:shadow-md-4 hover:bg-google-blue-700
+           active:shadow-md-2
+           focus:outline-none focus:ring-2 focus:ring-google-blue-200 focus:ring-offset-2;
+  }
+
+  /* Material Design ナビゲーションレール */
+  .nav-rail-md {
+    @apply fixed left-0 top-0 bottom-0
+           w-20 py-6
+           bg-google-gray-50
+           border-r border-google-gray-200
+           flex flex-col items-center;
+  }
+
+  /* Material Design ナビゲーションドロワー */
+  .nav-drawer-md {
+    @apply fixed left-0 top-0 bottom-0
+           w-72 py-4 px-3
+           bg-google-gray-50
+           border-r border-google-gray-200;
+  }
+
+  /* Material Design リストアイテム */
+  .list-item-md {
+    @apply flex items-center gap-3 px-4 py-3
+           rounded-md-full
+           transition-all duration-md-short ease-md-standard
+           hover:bg-google-gray-100
+           cursor-pointer;
+  }
+
+  .list-item-md-active {
+    @apply list-item-md bg-google-blue-50 text-google-blue-700;
+  }
+
+  /* Material Design ディバイダー */
+  .divider-md {
+    @apply h-px bg-google-gray-200 my-2;
+  }
+
+  /* Material Design スナックバー */
+  .snackbar-md {
+    @apply fixed bottom-6 left-1/2 -translate-x-1/2
+           px-4 py-3 min-w-[288px] max-w-[568px]
+           bg-google-gray-800 text-white text-sm
+           rounded-md shadow-md-3
+           flex items-center justify-between gap-4;
+  }
+
+  /* Material Design ダイアログ */
+  .dialog-backdrop-md {
+    @apply fixed inset-0 z-50 flex items-center justify-center
+           bg-black/50;
+  }
+
+  .dialog-md {
+    @apply bg-white rounded-md-2xl shadow-md-5
+           max-w-md w-full mx-4 p-6
+           transform transition-all duration-md-medium ease-md-decelerate;
+  }
+
+  /* Material Design テーブル */
+  .table-md {
+    @apply w-full border-collapse;
+  }
+
+  .table-md th {
+    @apply px-4 py-3 text-left text-xs font-medium uppercase tracking-wider
+           text-google-gray-600 bg-google-gray-50
+           border-b border-google-gray-200;
+  }
+
+  .table-md td {
+    @apply px-4 py-3 text-sm text-google-gray-700
+           border-b border-google-gray-100;
+  }
+
+  .table-md tr:hover td {
+    @apply bg-google-gray-50;
+  }
+
+  /* Material Design プログレスバー */
+  .progress-md {
+    @apply h-1 w-full bg-google-gray-200 rounded-full overflow-hidden;
+  }
+
+  .progress-md-bar {
+    @apply h-full bg-google-blue-600 rounded-full
+           transition-all duration-md-long ease-md-standard;
+  }
+
+  /* Material Design スイッチ */
+  .switch-md {
+    @apply relative inline-flex h-6 w-11 shrink-0 cursor-pointer
+           rounded-full border-2 border-transparent
+           transition-colors duration-md-short ease-md-standard
+           focus:outline-none focus:ring-2 focus:ring-google-blue-200 focus:ring-offset-2;
+  }
+
+  .switch-md-thumb {
+    @apply pointer-events-none inline-block h-5 w-5
+           rounded-full bg-white shadow-md-1
+           transform transition-transform duration-md-short ease-md-standard;
+  }
+
+  /* Material Design タブ */
+  .tabs-md {
+    @apply flex border-b border-google-gray-200;
+  }
+
+  .tab-md {
+    @apply px-6 py-3 text-sm font-medium
+           text-google-gray-600
+           border-b-2 border-transparent
+           transition-all duration-md-short ease-md-standard
+           hover:text-google-gray-800 hover:bg-google-gray-50
+           cursor-pointer;
+  }
+
+  .tab-md-active {
+    @apply tab-md text-google-blue-600 border-google-blue-600;
+  }
+
+  /* Material Design ヘッダー */
+  .header-md {
+    @apply text-md-headline-medium font-google text-google-gray-900;
+  }
+
+  /* Material Design サブヘッダー */
+  .subheader-md {
+    @apply text-md-title-large font-google text-google-gray-700;
+  }
+
+  /* Material Design 本文 */
+  .body-md {
+    @apply text-md-body-medium font-roboto text-google-gray-700;
+  }
+
+  /* Material Design キャプション */
+  .caption-md {
+    @apply text-md-body-small font-roboto text-google-gray-500;
+  }
+
+  /* Material Design スケルトンローダー */
+  .skeleton-md {
+    @apply bg-google-gray-200 rounded-md
+           animate-pulse;
+  }
+
+  /* Material Design サーチバー */
+  .searchbar-md {
+    @apply flex items-center gap-3 px-4 py-2.5
+           bg-google-gray-100 rounded-md-full
+           transition-all duration-md-short ease-md-standard
+           focus-within:bg-white focus-within:shadow-md-2 focus-within:border focus-within:border-google-gray-200;
+  }
+
+  .searchbar-md input {
+    @apply flex-1 bg-transparent text-sm
+           placeholder:text-google-gray-500
+           focus:outline-none;
+  }
+
+  /* Material Design アバター */
+  .avatar-md {
+    @apply flex items-center justify-center
+           rounded-full bg-google-blue-100 text-google-blue-700
+           font-medium text-sm;
+  }
+
+  .avatar-md-sm {
+    @apply avatar-md w-8 h-8 text-xs;
+  }
+
+  .avatar-md-md {
+    @apply avatar-md w-10 h-10 text-sm;
+  }
+
+  .avatar-md-lg {
+    @apply avatar-md w-12 h-12 text-base;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* A4印刷用スタイル */
+@media print {
+  /* ページ設定 */
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  /* 印刷時に非表示にする要素 */
+  .no-print,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* bodyのリセット */
+  body {
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 印刷対象のコンテナ */
+  .print-content {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    background: white !important;
+    z-index: 99999 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* A4サイズの見積書 */
+  .estimate-print {
+    width: 210mm !important;
+    min-height: auto !important;
+    max-width: 100% !important;
+    padding: 8mm 12mm !important;
+    margin: 0 auto !important;
+    background: white !important;
+    box-shadow: none !important;
+    font-size: 10pt !important;
+  }
+
+  /* テーブルの印刷最適化 */
+  .estimate-print table {
+    page-break-inside: avoid;
+    font-size: 9pt !important;
+  }
+
+  .estimate-print th,
+  .estimate-print td {
+    padding: 4px 6px !important;
+  }
+
+  /* ヘッダー・フッターのページ分割防止 */
+  .estimate-print > div {
+    page-break-inside: avoid;
+  }
+
+  /* 背景色を印刷 */
+  .estimate-print .bg-gray-800 {
+    background-color: #1f2937 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .estimate-print .bg-gray-100 {
+    background-color: #f3f4f6 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .estimate-print .bg-gray-50 {
+    background-color: #f9fafb !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .estimate-print .bg-blue-600 {
+    background-color: #2563eb !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .estimate-print .text-white {
+    color: white !important;
+  }
+
+  /* モーダル背景を非表示 */
+  .modal-backdrop {
+    background: transparent !important;
+  }
+
+  /* スクロール領域の印刷対応 */
+  .overflow-y-auto {
+    overflow: visible !important;
+  }
+}
