@@ -233,16 +233,16 @@ const defaultSalesReps: SalesRep[] = [
 
 // デフォルトの車種リスト
 const defaultVehicleModels: VehicleModel[] = [
-  { id: '1', name: 'トイファクトリー アルコーバ' },
-  { id: '2', name: 'レクビィ ホビクル' },
-  { id: '3', name: 'オートステージ STAGE21' },
-  { id: '4', name: 'インディアナRV インディ727' },
-  { id: '5', name: 'バンテック ジル520' },
-  { id: '6', name: 'ナッツRV クレソン' },
-  { id: '7', name: 'AtoZ アミティ' },
-  { id: '8', name: 'キャンピングカー広島 ポップコン' },
-  { id: '9', name: 'ホワイトハウス コンパス' },
-  { id: '10', name: 'ケイワークス オーロラ' },
+  { id: '1', name: 'トヨタ アルファード' },
+  { id: '2', name: 'トヨタ ヴェルファイア' },
+  { id: '3', name: 'トヨタ プリウス' },
+  { id: '4', name: 'ホンダ ヴェゼル' },
+  { id: '5', name: 'ホンダ フリード' },
+  { id: '6', name: '日産 セレナ' },
+  { id: '7', name: '日産 ノート' },
+  { id: '8', name: 'マツダ CX-5' },
+  { id: '9', name: 'スバル レヴォーグ' },
+  { id: '10', name: 'ダイハツ タント' },
 ]
 
 const MAX_VEHICLE_MODELS = 30
@@ -339,12 +339,12 @@ const defaultCostFormulas: CostFormula[] = [
 
 // デフォルトの仕入れ先リスト
 const defaultVehicleSuppliers: VehicleSupplier[] = [
-  { id: '1', name: 'トイファクトリー' },
-  { id: '2', name: 'レクビィ' },
-  { id: '3', name: 'バンテック' },
-  { id: '4', name: 'ナッツRV' },
-  { id: '5', name: 'AtoZ' },
-  { id: '6', name: 'ケイワークス' },
+  { id: '1', name: 'トヨタ自動車' },
+  { id: '2', name: 'ホンダ' },
+  { id: '3', name: '日産自動車' },
+  { id: '4', name: 'マツダ' },
+  { id: '5', name: 'スバル' },
+  { id: '6', name: 'ダイハツ工業' },
 ]
 
 // デフォルトの諸費用設定
@@ -364,7 +364,7 @@ const defaultDocumentLayout: DocumentLayoutSettings = {
   pageMarginX: 20,
   pageMarginY: 15,
   showSubTitle: true,
-  subTitle: 'キャンピングカー専門店',
+  subTitle: '中古車・新車販売',
 }
 
 export const useSettingsStore = create<SettingsState>()(

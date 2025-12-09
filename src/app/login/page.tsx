@@ -2,12 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useAuthStore } from '@/stores/auth-store'
 import { UserRole } from '@/types'
-import api from '@/lib/api'
 
 // モックアカウント（バックエンドなしでも動作）
 const MOCK_ACCOUNTS = [
@@ -73,48 +69,22 @@ const MOCK_ACCOUNTS = [
 export default function LoginPage() {
   const router = useRouter()
   const setAuth = useAuthStore((state) => state.setAuth)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
+  // ダイレクトログイン関数
+  const handleDirectLogin = (accountIndex: number) => {
     setLoading(true)
-    setError('')
+    const mockAccount = MOCK_ACCOUNTS[accountIndex]
 
-    // 入力値をトリム
-    const trimmedEmail = email.trim().toLowerCase()
-    const trimmedPassword = password.trim()
+    console.log('ダイレクトログイン:', mockAccount.user.name) // デバッグ用
+    const mockToken = `mock-jwt-token-${mockAccount.user.role}-${Date.now()}`
+    setAuth(mockAccount.user, mockToken)
 
-    console.log('ログイン試行:', trimmedEmail) // デバッグ用
-
-    // モックアカウントで認証（バックエンドなしでも動作）
-    const mockAccount = MOCK_ACCOUNTS.find(
-      acc => acc.email.toLowerCase() === trimmedEmail && acc.password === trimmedPassword
-    )
-
-    if (mockAccount) {
-      console.log('モックアカウント認証成功:', mockAccount.user.name) // デバッグ用
-      const mockToken = `mock-jwt-token-${mockAccount.user.role}-${Date.now()}`
-      setAuth(mockAccount.user, mockToken)
+    // 少し遅延を入れてログインした感を出す
+    setTimeout(() => {
       router.push('/dashboard')
       setLoading(false)
-      return
-    }
-
-    // モック認証失敗後、バックエンドAPI呼び出しを試行
-    try {
-      const response = await api.post('/auth/login', { email: trimmedEmail, password: trimmedPassword })
-      const { access_token, user } = response.data
-      setAuth(user, access_token)
-      router.push('/dashboard')
-    } catch (apiErr: any) {
-      console.log('API認証失敗:', apiErr) // デバッグ用
-      setError('メールアドレスまたはパスワードが間違っています')
-    } finally {
-      setLoading(false)
-    }
+    }, 300)
   }
 
   return (
@@ -132,55 +102,38 @@ export default function LoginPage() {
           <div className="mb-6">
             <h2 className="text-xl font-semibold text-google-gray-800 mb-1">ログイン</h2>
             <p className="text-sm text-google-gray-500">
-              アカウント情報を入力してください
+              ユーザーを選択してログインしてください
             </p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-5">
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-md-label-large text-google-gray-700">
-                メールアドレス
-              </label>
-              <input
-                id="email"
-                type="email"
-                placeholder="user@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="input-md"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="password" className="text-md-label-large text-google-gray-700">
-                パスワード
-              </label>
-              <input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="input-md"
-              />
-            </div>
-
-            {error && (
-              <div className="p-3 bg-google-red-50 text-google-red-700 text-sm rounded-md border border-google-red-200">
-                {error}
-              </div>
-            )}
-
+          <div className="space-y-3">
             <button
-              type="submit"
-              className="w-full py-3 px-4 bg-google-blue-600 hover:bg-google-blue-700 text-white font-medium rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={() => handleDirectLogin(0)}
+              className="w-full py-4 px-4 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-between"
               disabled={loading}
             >
-              {loading ? 'ログイン中...' : 'ログイン'}
+              <span className="text-lg">管理者としてログイン</span>
+              <span className="chip-md-red text-xs bg-white/20">管理者</span>
             </button>
-          </form>
+
+            <button
+              onClick={() => handleDirectLogin(1)}
+              className="w-full py-4 px-4 bg-yellow-600 hover:bg-yellow-700 text-white font-medium rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-between"
+              disabled={loading}
+            >
+              <span className="text-lg">マネージャーとしてログイン</span>
+              <span className="chip-md-yellow text-xs bg-white/20">マネージャー</span>
+            </button>
+
+            <button
+              onClick={() => handleDirectLogin(2)}
+              className="w-full py-4 px-4 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-between"
+              disabled={loading}
+            >
+              <span className="text-lg">営業としてログイン</span>
+              <span className="chip-md-green text-xs bg-white/20">営業</span>
+            </button>
+          </div>
 
           <div className="mt-6 space-y-2">
             <p className="text-md-label-large text-google-gray-700">アカウント一覧:</p>
